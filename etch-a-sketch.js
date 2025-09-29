@@ -9,12 +9,18 @@ function createGrid(gridSize) {
         for(let j = 0; j < gridSize; j++) {
             const col = document.createElement("div")
             col.classList.add("col")
-            col.addEventListener("mouseover", event => col.style.backgroundColor = `rgb(
-                ${Math.random() * 256}, 
-                ${Math.random() * 256}, 
-                ${Math.random() * 256}
-                )`
-            )
+            col.style.opacity = 1;
+            col.addEventListener("mouseover", event => {
+                if(col.style.backgroundColor) {
+                    col.style.opacity -= 0.1;
+                } else {
+                    col.style.backgroundColor = `rgb(
+                        ${Math.random() * 256}, 
+                        ${Math.random() * 256}, 
+                        ${Math.random() * 256}
+                    )`
+                }
+            })
             row.appendChild(col)
         }
     }
